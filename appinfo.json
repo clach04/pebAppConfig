@@ -1,22 +1,26 @@
 {
-    "appKeys": {},
+    "appKeys": {
+        "KEY_BGHOUR": 2,
+        "KEY_BGMIN": 0,
+        "KEY_FGHOUR": 3,
+        "KEY_FGMIN": 1,
+        "KEY_RIM": 4
+    },
     "capabilities": [
         "configurable"
     ],
-    "companyName": "35kong@gmail.com",
-    "longName": "appConfigTest",
+    "companyName": "clach04",
+    "longName": "webconfigdemo",
     "projectType": "native",
     "resources": {
         "media": []
     },
-    "sdkVersion": "3",
-    "shortName": "appConfigTest",
-    "targetPlatforms": [
-        "basalt"
-    ],
-    "uuid": "44b274db-e6dc-4b26-89b0-8ce007db273b",
+    "sdkVersion": "2",
+    "shortName": "webconfigdemo",
+    "uuid": "25b40d63-551c-41ca-9b63-37f88da78b23",
+    "versionCode": 1,
     "versionLabel": "1.0",
     "watchapp": {
-        "watchface": false
+        "watchface": true
     }
 }

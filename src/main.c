@@ -1,89 +1,118 @@
 #include <pebble.h>
-  
-static Window *window;
-static TextLayer *tLayer;
-  
+
 #define KEY_BGMIN 0
 #define KEY_FGMIN 1
 #define KEY_BGHOUR 2
 #define KEY_FGHOUR 3
-#define KEY_CRIM 4
+#define KEY_RIM 4
   
-int bgMin;
-int fgMin;
-int bgHour;
-int fgHour;
-int fgRim;
+int bgMin=1;
+int fgMin=2;
+int bgHour=3;
+int fgHour=4;
+int fgRim=5;
 
 
-static void window_load(Window *window) {
-  tLayer = text_layer_create(GRect(0, 0, 144, 168));
- 	text_layer_set_font(tLayer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
-  layer_add_child(window_get_root_layer(window), text_layer_get_layer(tLayer));
+static Window *s_main_window;
+static TextLayer *s_time_layer;
+
+
+static void update_text()
+{
+  static char buffer[50];
+
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "update_text() called");
+  snprintf(buffer, sizeof(buffer), "%d, %d, %d, %d, %d", bgMin, fgMin, bgHour, fgHour, fgRim);
+  text_layer_set_text(s_time_layer, buffer);
 }
-
 
 static void in_recv_handler(DictionaryIterator *iterator, void *context)
 {
-  Tuple *t = dict_read_first(iterator);
-  if(t)
+  Tuple *t=NULL;
+
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "in_recv_handler() called");
+  t = dict_read_first(iterator);
+  while(t != NULL)
   {
     switch(t->key)
     {
-    case KEY_BGMIN:      
+    case KEY_BGMIN:
+      APP_LOG(APP_LOG_LEVEL_DEBUG, "got KEY_BGMIN");
       bgMin = (int)t->value->int16;             
       break;
     case KEY_FGMIN:
+      APP_LOG(APP_LOG_LEVEL_DEBUG, "got KEY_FGMIN");
       fgMin = (int)t->value->int16;      
       break;
     case KEY_BGHOUR:
+      APP_LOG(APP_LOG_LEVEL_DEBUG, "got KEY_BGHOUR");
       bgHour = (int)t->value->int16;      
       break;      
     case KEY_FGHOUR:
+      APP_LOG(APP_LOG_LEVEL_DEBUG, "got KEY_FGHOUR");
       fgHour = (int)t->value->int16;      
       break;  
-    case KEY_CRIM:
+    case KEY_RIM:
+      APP_LOG(APP_LOG_LEVEL_DEBUG, "got KEY_RIM");
       fgRim = (int)t->value->int16;      
-      break;  
+      break;
+    default:
+      APP_LOG(APP_LOG_LEVEL_ERROR, "Unknown key! :-(");
+      break;
     }
+  t = dict_read_next(iterator);
   }
   
   //Update text
-  char buffer[50];
-  snprintf(buffer, sizeof(buffer), "%d, %d, %d, %d, %d", bgMin, fgMin, bgHour, fgHour, fgRim);
-  text_layer_set_text_color(tLayer, GColorBlack);
-  text_layer_set_text(tLayer, buffer);  
+  update_text();
 }
 
+static void main_window_load(Window *window) {
+  // Create time TextLayer
+  s_time_layer = text_layer_create(GRect(0, 55, 144, 50));
+  text_layer_set_background_color(s_time_layer, GColorClear);
+  text_layer_set_text_color(s_time_layer, GColorBlack);
+  text_layer_set_text(s_time_layer, "00:00");
+  update_text();
+
+  // Improve the layout to be more like a watchface
+  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
+  text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+
+  // Add it as a child layer to the Window's root layer
+  layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
+}
+
+static void main_window_unload(Window *window) {
+  // Destroy TextLayer
+  text_layer_destroy(s_time_layer);
+}
   
-static void window_unload(Window *window) {
-  text_layer_destroy(tLayer);
-}
+static void init() {
+  // Create main Window element and assign to pointer
+  s_main_window = window_create();
 
-
-static void init(void) {
-  window = window_create();
-  window_set_window_handlers(window, (WindowHandlers) {
-    .load = window_load,
-    .unload = window_unload,
+  // Set handlers to manage the elements inside the Window
+  window_set_window_handlers(s_main_window, (WindowHandlers) {
+    .load = main_window_load,
+    .unload = main_window_unload
   });
-  const bool animated = true;
-  window_stack_push(window, animated);
-    
-  app_message_register_inbox_received((AppMessageInboxReceived) in_recv_handler);
+
+  // Show the Window on the watch, with animated=true
+  window_stack_push(s_main_window, true);
+
+  /* TODO use AppSync instead? */
+  app_message_register_inbox_received(in_recv_handler);
   app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum()); 
 }
 
-
-static void deinit(void) {
-  window_destroy(window);
+static void deinit() {
+  // Destroy Window
+  window_destroy(s_main_window);
 }
-
 
 int main(void) {
   init();
   app_event_loop();
   deinit();
 }
-
-  
