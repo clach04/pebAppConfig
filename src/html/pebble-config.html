@@ -1,0 +1,413 @@
+<html>
+<head>
+<title>colour Pebble App</title>
+<style>
+p {
+	font-family:Arial;
+	font-size:11pt;
+}
+
+h1 {
+	font-family:Arial;
+	font-size:20pt;
+}
+</style>
+ <script src="http://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+<h1>color Watch Face config:</h1>
+<br><br>
+<p>Minute Background colour:
+	<select id="bg_min" name="bg_min">
+		<option value="AAFF55">1</option>
+		<option value="FFFFAA">2</option>
+		<option value="AAAAAA">3</option>
+		<option value="FFFFFF">63</option>
+		<option value="AAFFAA">4</option>
+		<option value="55FF00">5</option>
+		<option value="AAFF00">6</option>
+		<option value="FFFF55">7</option>
+		<option value="000000">0</option>
+		<option value="555555">8</option>
+		<option value="55FF55">9</option>
+		<option value="00FF00">10</option>
+		<option value="FFFF00">11</option>
+		<option value="FFAA55">12</option>
+		<option value="00FF55">13</option>
+		<option value="00AA00">14</option>
+		<option value="55AA00">15</option>
+		<option value="AAAA55">16</option>
+		<option value="AAAA00">17</option>
+		<option value="FFAA00">18</option>
+		<option value="FF5500">19</option>
+		<option value="FFAAAA">20</option>
+		<option value="55FFAA">21</option>
+		<option value="00AA55">22</option>
+		<option value="55AA55">23</option>
+		<option value="005500">24</option>
+		<option value="555500">25</option>
+		<option value="AA5500">26</option>
+		<option value="FF0000">27</option>
+		<option value="FF5555">28</option>
+		<option value="00FFAA">29</option>
+		<option value="00AAAA">30</option>
+		<option value="55AAAA">31</option>
+		<option value="005555">32</option>
+		<option value="AA5555">33</option>
+		<option value="FF0055">34</option>
+		<option value="55FFFF">35</option>
+		<option value="00FFFF">36</option>
+		<option value="0055AA">37</option>
+		<option value="550000">38</option>
+		<option value="AA0000">39</option>
+		<option value="AAFFFF">40</option>
+		<option value="00AAFF">41</option>
+		<option value="0000AA">42</option>
+		<option value="000055">43</option>
+		<option value="550055">44</option>
+		<option value="AA0055">45</option>
+		<option value="FF00AA">46</option>
+		<option value="55AAFF">47</option>
+		<option value="0000FF">48</option>
+		<option value="5500FF">49</option>
+		<option value="5500AA">50</option>
+		<option value="AA00AA">51</option>
+		<option value="FF00FF">52</option>
+		<option value="FF55AA">53</option>
+		<option value="0055FF">54</option>
+		<option value="5555FF">55</option>
+		<option value="5555AA">56</option>
+		<option value="AA00FF">57</option>
+		<option value="AA55AA">58</option>
+		<option value="FF55FF">59</option>
+		<option value="FFAAFF">60</option>
+		<option value="AAAAFF">61</option>
+		<option value="AA55FF">62</option>
+	</select>
+</p>
+
+<p>Minute foreground colour:
+<select id="fg_min" name="fg_min">
+			<option value="AAFF55">1</option>
+		<option value="FFFFAA">2</option>
+		<option value="AAAAAA">3</option>
+		<option value="FFFFFF">63</option>
+		<option value="AAFFAA">4</option>
+		<option value="55FF00">5</option>
+		<option value="AAFF00">6</option>
+		<option value="FFFF55">7</option>
+		<option value="000000">0</option>
+		<option value="555555">8</option>
+		<option value="55FF55">9</option>
+		<option value="00FF00">10</option>
+		<option value="FFFF00">11</option>
+		<option value="FFAA55">12</option>
+		<option value="00FF55">13</option>
+		<option value="00AA00">14</option>
+		<option value="55AA00">15</option>
+		<option value="AAAA55">16</option>
+		<option value="AAAA00">17</option>
+		<option value="FFAA00">18</option>
+		<option value="FF5500">19</option>
+		<option value="FFAAAA">20</option>
+		<option value="55FFAA">21</option>
+		<option value="00AA55">22</option>
+		<option value="55AA55">23</option>
+		<option value="005500">24</option>
+		<option value="555500">25</option>
+		<option value="AA5500">26</option>
+		<option value="FF0000">27</option>
+		<option value="FF5555">28</option>
+		<option value="00FFAA">29</option>
+		<option value="00AAAA">30</option>
+		<option value="55AAAA">31</option>
+		<option value="005555">32</option>
+		<option value="AA5555">33</option>
+		<option value="FF0055">34</option>
+		<option value="55FFFF">35</option>
+		<option value="00FFFF">36</option>
+		<option value="0055AA">37</option>
+		<option value="550000">38</option>
+		<option value="AA0000">39</option>
+		<option value="AAFFFF">40</option>
+		<option value="00AAFF">41</option>
+		<option value="0000AA">42</option>
+		<option value="000055">43</option>
+		<option value="550055">44</option>
+		<option value="AA0055">45</option>
+		<option value="FF00AA">46</option>
+		<option value="55AAFF">47</option>
+		<option value="0000FF">48</option>
+		<option value="5500FF">49</option>
+		<option value="5500AA">50</option>
+		<option value="AA00AA">51</option>
+		<option value="FF00FF">52</option>
+		<option value="FF55AA">53</option>
+		<option value="0055FF">54</option>
+		<option value="5555FF">55</option>
+		<option value="5555AA">56</option>
+		<option value="AA00FF">57</option>
+		<option value="AA55AA">58</option>
+		<option value="FF55FF">59</option>
+		<option value="FFAAFF">60</option>
+		<option value="AAAAFF">61</option>
+		<option value="AA55FF">62</option>	
+	</select>
+</p> 
+
+<p> Hour background colour
+<select id="bg_hour" name="bg_hour">
+			<option value="AAFF55">1</option>
+		<option value="FFFFAA">2</option>
+		<option value="AAAAAA">3</option>
+		<option value="FFFFFF">63</option>
+		<option value="AAFFAA">4</option>
+		<option value="55FF00">5</option>
+		<option value="AAFF00">6</option>
+		<option value="FFFF55">7</option>
+		<option value="000000">0</option>
+		<option value="555555">8</option>
+		<option value="55FF55">9</option>
+		<option value="00FF00">10</option>
+		<option value="FFFF00">11</option>
+		<option value="FFAA55">12</option>
+		<option value="00FF55">13</option>
+		<option value="00AA00">14</option>
+		<option value="55AA00">15</option>
+		<option value="AAAA55">16</option>
+		<option value="AAAA00">17</option>
+		<option value="FFAA00">18</option>
+		<option value="FF5500">19</option>
+		<option value="FFAAAA">20</option>
+		<option value="55FFAA">21</option>
+		<option value="00AA55">22</option>
+		<option value="55AA55">23</option>
+		<option value="005500">24</option>
+		<option value="555500">25</option>
+		<option value="AA5500">26</option>
+		<option value="FF0000">27</option>
+		<option value="FF5555">28</option>
+		<option value="00FFAA">29</option>
+		<option value="00AAAA">30</option>
+		<option value="55AAAA">31</option>
+		<option value="005555">32</option>
+		<option value="AA5555">33</option>
+		<option value="FF0055">34</option>
+		<option value="55FFFF">35</option>
+		<option value="00FFFF">36</option>
+		<option value="0055AA">37</option>
+		<option value="550000">38</option>
+		<option value="AA0000">39</option>
+		<option value="AAFFFF">40</option>
+		<option value="00AAFF">41</option>
+		<option value="0000AA">42</option>
+		<option value="000055">43</option>
+		<option value="550055">44</option>
+		<option value="AA0055">45</option>
+		<option value="FF00AA">46</option>
+		<option value="55AAFF">47</option>
+		<option value="0000FF">48</option>
+		<option value="5500FF">49</option>
+		<option value="5500AA">50</option>
+		<option value="AA00AA">51</option>
+		<option value="FF00FF">52</option>
+		<option value="FF55AA">53</option>
+		<option value="0055FF">54</option>
+		<option value="5555FF">55</option>
+		<option value="5555AA">56</option>
+		<option value="AA00FF">57</option>
+		<option value="AA55AA">58</option>
+		<option value="FF55FF">59</option>
+		<option value="FFAAFF">60</option>
+		<option value="AAAAFF">61</option>
+		<option value="AA55FF">62</option>	
+	</select>
+</p>
+
+<p>Hour foreground colour
+<select id="fg_hour" name="fg_hour">
+			<option value="AAFF55">1</option>
+		<option value="FFFFAA">2</option>
+		<option value="AAAAAA">3</option>
+		<option value="FFFFFF">63</option>
+		<option value="AAFFAA">4</option>
+		<option value="55FF00">5</option>
+		<option value="AAFF00">6</option>
+		<option value="FFFF55">7</option>
+		<option value="000000">0</option>
+		<option value="555555">8</option>
+		<option value="55FF55">9</option>
+		<option value="00FF00">10</option>
+		<option value="FFFF00">11</option>
+		<option value="FFAA55">12</option>
+		<option value="00FF55">13</option>
+		<option value="00AA00">14</option>
+		<option value="55AA00">15</option>
+		<option value="AAAA55">16</option>
+		<option value="AAAA00">17</option>
+		<option value="FFAA00">18</option>
+		<option value="FF5500">19</option>
+		<option value="FFAAAA">20</option>
+		<option value="55FFAA">21</option>
+		<option value="00AA55">22</option>
+		<option value="55AA55">23</option>
+		<option value="005500">24</option>
+		<option value="555500">25</option>
+		<option value="AA5500">26</option>
+		<option value="FF0000">27</option>
+		<option value="FF5555">28</option>
+		<option value="00FFAA">29</option>
+		<option value="00AAAA">30</option>
+		<option value="55AAAA">31</option>
+		<option value="005555">32</option>
+		<option value="AA5555">33</option>
+		<option value="FF0055">34</option>
+		<option value="55FFFF">35</option>
+		<option value="00FFFF">36</option>
+		<option value="0055AA">37</option>
+		<option value="550000">38</option>
+		<option value="AA0000">39</option>
+		<option value="AAFFFF">40</option>
+		<option value="00AAFF">41</option>
+		<option value="0000AA">42</option>
+		<option value="000055">43</option>
+		<option value="550055">44</option>
+		<option value="AA0055">45</option>
+		<option value="FF00AA">46</option>
+		<option value="55AAFF">47</option>
+		<option value="0000FF">48</option>
+		<option value="5500FF">49</option>
+		<option value="5500AA">50</option>
+		<option value="AA00AA">51</option>
+		<option value="FF00FF">52</option>
+		<option value="FF55AA">53</option>
+		<option value="0055FF">54</option>
+		<option value="5555FF">55</option>
+		<option value="5555AA">56</option>
+		<option value="AA00FF">57</option>
+		<option value="AA55AA">58</option>
+		<option value="FF55FF">59</option>
+		<option value="FFAAFF">60</option>
+		<option value="AAAAFF">61</option>
+		<option value="AA55FF">62</option>		
+	</select>
+</p>
+
+<p>Clock rim colour
+<select id="rm_clock" name="rm_clock">
+			<option value="AAFF55">1</option>
+		<option value="FFFFAA">2</option>
+		<option value="AAAAAA">3</option>
+		<option value="FFFFFF">63</option>
+		<option value="AAFFAA">4</option>
+		<option value="55FF00">5</option>
+		<option value="AAFF00">6</option>
+		<option value="FFFF55">7</option>
+		<option value="000000">0</option>
+		<option value="555555">8</option>
+		<option value="55FF55">9</option>
+		<option value="00FF00">10</option>
+		<option value="FFFF00">11</option>
+		<option value="FFAA55">12</option>
+		<option value="00FF55">13</option>
+		<option value="00AA00">14</option>
+		<option value="55AA00">15</option>
+		<option value="AAAA55">16</option>
+		<option value="AAAA00">17</option>
+		<option value="FFAA00">18</option>
+		<option value="FF5500">19</option>
+		<option value="FFAAAA">20</option>
+		<option value="55FFAA">21</option>
+		<option value="00AA55">22</option>
+		<option value="55AA55">23</option>
+		<option value="005500">24</option>
+		<option value="555500">25</option>
+		<option value="AA5500">26</option>
+		<option value="FF0000">27</option>
+		<option value="FF5555">28</option>
+		<option value="00FFAA">29</option>
+		<option value="00AAAA">30</option>
+		<option value="55AAAA">31</option>
+		<option value="005555">32</option>
+		<option value="AA5555">33</option>
+		<option value="FF0055">34</option>
+		<option value="55FFFF">35</option>
+		<option value="00FFFF">36</option>
+		<option value="0055AA">37</option>
+		<option value="550000">38</option>
+		<option value="AA0000">39</option>
+		<option value="AAFFFF">40</option>
+		<option value="00AAFF">41</option>
+		<option value="0000AA">42</option>
+		<option value="000055">43</option>
+		<option value="550055">44</option>
+		<option value="AA0055">45</option>
+		<option value="FF00AA">46</option>
+		<option value="55AAFF">47</option>
+		<option value="0000FF">48</option>
+		<option value="5500FF">49</option>
+		<option value="5500AA">50</option>
+		<option value="AA00AA">51</option>
+		<option value="FF00FF">52</option>
+		<option value="FF55AA">53</option>
+		<option value="0055FF">54</option>
+		<option value="5555FF">55</option>
+		<option value="5555AA">56</option>
+		<option value="AA00FF">57</option>
+		<option value="AA55AA">58</option>
+		<option value="FF55FF">59</option>
+		<option value="FFAAFF">60</option>
+		<option value="AAAAFF">61</option>
+		<option value="AA55FF">62</option>	
+	</select>
+</p>
+
+<p>
+	<button id="save_button">Save</button>
+</p>
+
+</body>
+</html>
+
+
+<script>
+
+// Something like this to get query variables.
+function getQueryParam(variable, defaultValue) {
+// Find all URL parameters
+var query = location.search.substring(1);
+var vars = query.split('&');
+for (var i = 0; i < vars.length; i++) {
+	var pair = vars[i].split('=');
+
+	// If the query variable parameter is found, decode it to use and return it for use
+	if (pair[0] === variable) {
+		return decodeURIComponent(pair[1]);
+	}
+}
+return defaultValue || false;
+}
+
+  //Setup to allow easy adding more options later
+  function saveOptions() {
+    var options = {
+      'bgmin': $("#bg_min option:selected").text(),
+	  'fgmin': $("#fg_min option:selected").text(),
+	  'bghour': $("#bg_hour option:selected").text(),
+	  'fghour': $("#fg_hour option:selected").text(),
+	  'rimface': $("#rm_clock option:selected").text()
+    }
+    return options;
+  };
+
+ $("#save_button").click(function () {
+	console.log("Submit");
+	var options = saveOptions();
+
+  // Set the return URL depending on the runtime environment
+  var return_to = getQueryParam('return_to', 'pebblejs://close#');
+  document.location.href = return_to + encodeURIComponent(JSON.stringify(options));
+ });
+
+</script>
+
